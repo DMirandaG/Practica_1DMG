@@ -1,10 +1,10 @@
-package miranda.david.da.practica_1dmg.login;
+package miranda.david.da.practica_1dmg.main;
 
 import miranda.david.da.practica_1dmg.login.events.LoginEvent;
 
-interface LoginPresenter {
+interface MainPresenter {
 
-    void login (String email, String password);
+    void cerrarSesion ();
     void onStart();
     void onStop();
     void onEventLoginThread(LoginEvent event);

@@ -1,8 +1,24 @@
 <resources>
     <string name="app_name">Practica_1DMG</string>
     <string name="correo">Correo</string>
-    <string name="contraseña">Contraseña</string>
+    <string name="password">Contraseña</string>
     <string name="login">Log In</string>
+    <string name="usuario">Username</string>
+    <string name="repetirpassword">Repetir Contraseña</string>
+    <string name="mensaje_error_activity_login">Login error</string>
+    <string name="mensaje_satisfactorio_activity_login">Login satisfactorio</string>
+    <string name="mensaje_satisfactorio_crear_cuenta">Cuenta creada satisfactoriamente</string>
+    <string name="mensaje_error_crear_cuenta">La cuenta no ha podido ser creada</string>
+    <string name="mensaje_error_introduzca_correo">Correo vacío o no válido</string>
+    <string name="mensaje_error_introduzca_password">Password vacía o muy corta</string>
+    <string name="mensaje_error_introduzca_password_diferente">La password es diferente</string>
+    <string name="botonGuardar">Guardar</string>
+    <string name="botonEliminar">Eliminar</string>
+    <string name="botonLogout">Log Out</string>
+    <string name="botonCrearCuenta">Crear Cuenta</string>
+    <string name="link_para_registrarse">Registrarse</string>
+    <string name="botonAtras">Atrás</string>
+
 
 
 

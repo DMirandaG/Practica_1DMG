@@ -1,11 +1,12 @@
-package miranda.david.da.practica_1dmg.login;
+package miranda.david.da.practica_1dmg.crear.cuenta;
 
 import miranda.david.da.practica_1dmg.login.events.LoginEvent;
 
-interface LoginPresenter {
+interface CrearCuentaPresenter {
 
-    void login (String email, String password);
+    void crearCuenta (String email, String password);
     void onStart();
     void onStop();
     void onEventLoginThread(LoginEvent event);
+
 }

@@ -9,6 +9,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.greenrobot.eventbus.EventBus;
+
+import miranda.david.da.practica_1dmg.login.events.LoginEvent;
+
 public class LoginRepositoryImpl implements LoginRepository {
 
 
@@ -20,25 +24,33 @@ public class LoginRepositoryImpl implements LoginRepository {
     }
 
     @Override
-    public void login(String email, String password){
-        Log.d(TAG, "signIn:" + email);
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    public void login(String email, String password) {
+        try{
+            Log.d(TAG, "signIn:" + email);
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
+                        if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithEmail:success");
-                            // TODO: 30/10/2018  
-                            //listener.onSuccess();
-                        }else {
+                            postEvent(LoginEvent.ON_LOG_IN_SUCCESS);
+                        } else {
                             Log.w(TAG, "signInWithEmail:failure");
-                            // TODO: 30/10/2018  
-                            //listener.onError();
+                            postEvent(LoginEvent.ON_LOG_IN_ERROR);
                         }
                     }
-                });
+            });
+        } catch (Exception e) {
+            postEvent(LoginEvent.ON_LOG_IN_ERROR);
+        }
     }
 
+
+    private void postEvent(int type) {
+        LoginEvent loginEvent = new LoginEvent();
+        loginEvent.setEventType(type);
+        EventBus.getDefault().post(loginEvent);
+    }
 
 
 
