@@ -3,6 +3,7 @@ package miranda.david.da.practica_1dmg.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,10 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import miranda.david.da.practica_1dmg.R;
 import miranda.david.da.practica_1dmg.login.LoginActivity;
-import miranda.david.da.practica_1dmg.login.LoginPresenterImpl;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private TextView IDUsuario;
     private ProgressBar pbCargando;
 
+    private static final String TAG = "IDUsuario";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         mainPresenter = new MainPresenterImpl(this);
         initView();
         mostrarEmail();
-
+        obtenerUID();
     }
 
     @Override
@@ -138,6 +142,17 @@ public class MainActivity extends AppCompatActivity implements MainView {
         IDUsuario.setEnabled(true);
 
     }
+
+    @Override
+    public void obtenerUID(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String uid = user.getUid();
+            Log.d(TAG, "valor:" + uid);
+            IDUsuario.setText(uid);
+        }
+    }
+
 
 
 }

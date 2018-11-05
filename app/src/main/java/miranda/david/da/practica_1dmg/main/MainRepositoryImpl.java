@@ -8,13 +8,13 @@ import miranda.david.da.practica_1dmg.login.events.LoginEvent;
 
 public class MainRepositoryImpl implements MainRepository {
 
+
     @Override
     public void cerrarSesion(){
         FirebaseAuth.getInstance().signOut();
         postEvent(LoginEvent.ON_LOG_OUT);
-
-
     }
+
 
     private void postEvent(int type) {
         LoginEvent loginEvent = new LoginEvent();

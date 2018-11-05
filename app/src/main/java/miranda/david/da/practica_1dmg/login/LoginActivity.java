@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             public void onClick(View v) {
                 mostrarCargando();
                 login(entradaEmail.getText().toString(), entradaPassword.getText().toString());
-                ocultarCargando();
+                //ocultarCargando();
             }
         });
         entradaEmail = (EditText) findViewById(R.id.entradaEmail);
