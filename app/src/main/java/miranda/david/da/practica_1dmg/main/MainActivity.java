@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         mainPresenter = new MainPresenterImpl(this);
         initView();
         mostrarEmail();
-        obtenerUID();
+        //obtenerUID();
     }
 
     @Override
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     }
 
-    @Override
+    /*@Override
     public void obtenerUID(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
             Log.d(TAG, "valor:" + uid);
             IDUsuario.setText(uid);
         }
-    }
+    }*/
 
 
 

@@ -100,6 +100,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         entradaEmail.setEnabled(false);
         entradaPassword.setClickable(false);
         entradaPassword.setEnabled(false);
+        linkRegistrarse.setClickable(false);
+        linkRegistrarse.setEnabled(false);
 
     }
 
@@ -112,6 +114,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         entradaEmail.setEnabled(true);
         entradaPassword.setClickable(true);
         entradaPassword.setEnabled(true);
+        linkRegistrarse.setClickable(true);
+        linkRegistrarse.setEnabled(true);
 
     }
 

@@ -5,7 +5,7 @@ import android.util.Log;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import miranda.david.da.practica_1dmg.login.events.LoginEvent;
+import miranda.david.da.practica_1dmg.main.events.MainEvent;
 
 public class MainPresenterImpl implements MainPresenter {
 
@@ -34,19 +34,19 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void onStop() {
-        mainView = null;
+        //mainView = null;
         eventBus.unregister(this);
     }
 
 
     @Override
     @Subscribe
-    public void onEventLoginThread(LoginEvent event) {
+    public void onEventLoginThread(MainEvent event) {
         mainView.ocultarCargando();
         Log.d(TAG, "valor:" + event.toString());
 
         switch (event.getEventType()) {
-            case LoginEvent.ON_LOG_OUT:
+            case MainEvent.ON_LOG_OUT:
                 mainView.irALogin();
                 break;
 

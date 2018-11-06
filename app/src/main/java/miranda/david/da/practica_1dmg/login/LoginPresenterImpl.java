@@ -35,7 +35,7 @@ public class LoginPresenterImpl implements LoginPresenter {
 
     @Override
     public void onStop() {
-        loginView = null;
+        //loginView = null;
         eventBus.unregister(this);
     }
 

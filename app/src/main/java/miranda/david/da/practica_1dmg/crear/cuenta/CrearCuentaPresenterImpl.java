@@ -5,7 +5,8 @@ import android.util.Log;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import miranda.david.da.practica_1dmg.login.events.LoginEvent;
+import miranda.david.da.practica_1dmg.crear.cuenta.events.CrearCuentaEvent;
+
 
 public class CrearCuentaPresenterImpl implements CrearCuentaPresenter {
 
@@ -34,20 +35,20 @@ public class CrearCuentaPresenterImpl implements CrearCuentaPresenter {
 
     @Override
     public void onStop() {
-        crearCuentaView = null;
+        //crearCuentaView = null;
         eventBus.unregister(this);
     }
 
     @Override
     @Subscribe
-    public void onEventLoginThread(LoginEvent event) {
+    public void onEventLoginThread(CrearCuentaEvent event) {
         crearCuentaView.ocultarCargando();
         Log.d(TAG, "valor:" + event.toString());
         switch (event.getEventType()) {
-            case LoginEvent.ON_CREATE_ACCOUNT_SUCESS:
+            case CrearCuentaEvent.ON_CREATE_ACCOUNT_SUCESS:
                 crearCuentaView.irAMain();
                 break;
-            case LoginEvent.ON_CREATE_ACCOUNT_ERROR:
+            case CrearCuentaEvent.ON_CREATE_ACCOUNT_ERROR:
                 crearCuentaView.mostrarErrorCrearCuenta();
                 crearCuentaView.limpiarFormulario();
                 break;

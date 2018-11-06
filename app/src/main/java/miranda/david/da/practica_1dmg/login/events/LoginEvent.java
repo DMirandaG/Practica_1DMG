@@ -10,13 +10,6 @@ public class LoginEvent {
 
     public final static int ON_RESET_PASSWORD_SUCESS = 3;
 
-    public final static int ON_CREATE_ACCOUNT_SUCESS = 4;
-
-    public final static int ON_CREATE_ACCOUNT_ERROR = 5;
-
-    public final static int ON_LOG_OUT = 6;
-
-
     private int eventType;
 
     public int getEventType() {

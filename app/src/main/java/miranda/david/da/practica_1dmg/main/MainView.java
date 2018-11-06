@@ -7,5 +7,5 @@ interface MainView {
     void mostrarEmail();
     void mostrarCargando();
     void ocultarCargando();
-    void obtenerUID();
+    //void obtenerUID();
 }
