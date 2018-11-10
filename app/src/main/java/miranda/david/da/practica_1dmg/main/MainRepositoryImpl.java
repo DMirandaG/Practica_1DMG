@@ -25,8 +25,8 @@ public class MainRepositoryImpl implements MainRepository {
     @Override
     public void cerrarSesion(){
         FirebaseAuth.getInstance().signOut();
-        // TODO: 10/11/2018 arreglar el log out 
-        //postEvent(MainEvent.ON_LOG_OUT);
+        // TODO: 10/11/2018 arreglar el log out
+        postEvent2(MainEvent.ON_LOG_OUT);
     }
 
     @Override
@@ -66,6 +66,12 @@ public class MainRepositoryImpl implements MainRepository {
         MainEvent mainEvent = new MainEvent();
         mainEvent.setEventType(type);
         mainEvent.setUsuario(usuario);
+        EventBus.getDefault().post(mainEvent);
+    }
+
+    private void postEvent2(int type) {
+        MainEvent mainEvent = new MainEvent();
+        mainEvent.setEventType(type);
         EventBus.getDefault().post(mainEvent);
     }
 }
