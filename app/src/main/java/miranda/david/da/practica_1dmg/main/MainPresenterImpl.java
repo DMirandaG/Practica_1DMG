@@ -28,6 +28,11 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
+    public void obtenerUsuario(String email){
+        mainInteractor.obtenerUsuario(email);
+    }
+
+    @Override
     public void onStart() {
         eventBus.register(this);
     }
@@ -44,10 +49,12 @@ public class MainPresenterImpl implements MainPresenter {
     public void onEventLoginThread(MainEvent event) {
         mainView.ocultarCargando();
         Log.d(TAG, "valor:" + event.toString());
-
         switch (event.getEventType()) {
             case MainEvent.ON_LOG_OUT:
                 mainView.irALogin();
+                break;
+            case MainEvent.ON_OBTENER_DATOS:
+                mainView.pintarUsuario(event.getUsuario());
                 break;
 
         }

@@ -13,4 +13,9 @@ public class MainInteractorImpl implements MainInteractor {
     public void cerrarSesion() {
         mainRepository.cerrarSesion();
     }
+
+    @Override
+    public void obtenerUsuario(String email){
+        mainRepository.obtenerUsuario(email);
+    }
 }

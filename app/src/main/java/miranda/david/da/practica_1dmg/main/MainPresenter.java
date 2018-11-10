@@ -9,4 +9,5 @@ interface MainPresenter {
     void onStart();
     void onStop();
     void onEventLoginThread(MainEvent event);
+    void obtenerUsuario(String email);
 }

@@ -10,11 +10,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import miranda.david.da.practica_1dmg.R;
 import miranda.david.da.practica_1dmg.login.LoginActivity;
+import miranda.david.da.practica_1dmg.usuario.Usuario;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         mainPresenter = new MainPresenterImpl(this);
         initView();
         mostrarEmail();
-        //obtenerUID();
+        obtenerUsuario(emailUsuario.getText().toString());
     }
 
     @Override
@@ -104,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         Bundle extras = intent.getExtras();
         String j =(String) extras.get("EXTRA_EMAIL");
         emailUsuario.setText(j);
-
     }
 
     @Override
@@ -143,15 +141,18 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     }
 
-    /*@Override
-    public void obtenerUID(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            String uid = user.getUid();
-            Log.d(TAG, "valor:" + uid);
-            IDUsuario.setText(uid);
-        }
-    }*/
+    @Override
+    public void obtenerUsuario(String email){
+        mainPresenter.obtenerUsuario(email);
+    }
+
+    @Override
+    public void pintarUsuario(Usuario usuario){
+        emailUsuario.setText(usuario.getEmail());
+        IDUsuario.setText(usuario.getId());
+        nombreUsuario.setText(usuario.getUsername());
+    }
+
 
 
 
