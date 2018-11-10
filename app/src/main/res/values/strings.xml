@@ -18,6 +18,8 @@
     <string name="botonCrearCuenta">Crear Cuenta</string>
     <string name="link_para_registrarse">Registrarse</string>
     <string name="botonAtras">Atrás</string>
+    <string name="mensaje_error_obtener_datos_usuario">Ha habido un error al obtener los datos de usuario</string>
+
 
 
 

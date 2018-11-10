@@ -11,4 +11,5 @@ interface MainView {
     void ocultarCargando();
     void obtenerUsuario(String email);
     void pintarUsuario(Usuario usuario);
+    void errorObtenerDatos();
 }

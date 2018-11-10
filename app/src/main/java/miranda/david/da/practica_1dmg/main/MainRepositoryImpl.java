@@ -48,7 +48,7 @@ public class MainRepositoryImpl implements MainRepository {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                    postEvent2(MainEvent.ON_OBTENER_DATOS_ERROR);
             }
         });
     }

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import miranda.david.da.practica_1dmg.R;
@@ -151,6 +152,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
         emailUsuario.setText(usuario.getEmail());
         IDUsuario.setText(usuario.getId());
         nombreUsuario.setText(usuario.getUsername());
+    }
+
+    @Override
+    public void errorObtenerDatos(){
+        Toast.makeText(getApplicationContext(), getString(R.string.mensaje_error_obtener_datos_usuario), Toast.LENGTH_SHORT).show();
+
+
     }
 
 

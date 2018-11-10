@@ -56,6 +56,9 @@ public class MainPresenterImpl implements MainPresenter {
             case MainEvent.ON_OBTENER_DATOS:
                 mainView.pintarUsuario(event.getUsuario());
                 break;
+            case MainEvent.ON_OBTENER_DATOS_ERROR:
+                mainView.errorObtenerDatos();
+                break;
 
         }
     }
