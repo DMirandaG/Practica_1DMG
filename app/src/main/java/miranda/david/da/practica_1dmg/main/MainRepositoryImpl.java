@@ -25,7 +25,6 @@ public class MainRepositoryImpl implements MainRepository {
     @Override
     public void cerrarSesion(){
         FirebaseAuth.getInstance().signOut();
-        // TODO: 10/11/2018 arreglar el log out
         postEvent2(MainEvent.ON_LOG_OUT);
     }
 
