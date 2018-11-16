@@ -12,6 +12,8 @@
     <string name="mensaje_error_introduzca_correo">Correo vacío o no válido</string>
     <string name="mensaje_error_introduzca_password">Password vacía o muy corta</string>
     <string name="mensaje_error_introduzca_password_diferente">La password es diferente</string>
+    <string name="mensaje_error_eliminar_usuario">Error al eliminar usuario</string>
+    <string name="mensaje_satisfactorio_eliminar_usuario">Usuario eliminado correctamente</string>
     <string name="botonGuardar">Guardar</string>
     <string name="botonEliminar">Eliminar</string>
     <string name="botonLogout">Log Out</string>

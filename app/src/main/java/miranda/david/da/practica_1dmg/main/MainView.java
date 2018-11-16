@@ -12,4 +12,7 @@ interface MainView {
     void obtenerUsuario(String email);
     void pintarUsuario(Usuario usuario);
     void errorObtenerDatos();
+    void eliminarUsuario(String id);
+    void eliminarUsuarioSatisfactorio();
+    void eliminarUsuarioError();
 }

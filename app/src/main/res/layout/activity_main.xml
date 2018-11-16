@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/emailUsuario"
         android:layout_width="311dp"
         android:layout_height="51dp"
@@ -26,7 +26,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/correo"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDUsuario" />

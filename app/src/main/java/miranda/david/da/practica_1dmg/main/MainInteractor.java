@@ -4,4 +4,5 @@ interface MainInteractor {
 
     void cerrarSesion();
     void obtenerUsuario(String email);
+    void eliminarUsuario(String id);
 }

@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private Button botonGuardar;
     private Button botonLogOut;
     private Button botonEliminar;
-    private EditText emailUsuario;
+    private TextView emailUsuario;
     private EditText nombreUsuario;
     private TextView IDUsuario;
     private ProgressBar pbCargando;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         botonEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                eliminarUsuario(IDUsuario.getText().toString());
             }
         });
         botonGuardar = (Button) findViewById(R.id.botonGuardar);
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
             }
         });
 
-        emailUsuario = (EditText) findViewById(R.id.emailUsuario);
+        emailUsuario = (TextView) findViewById(R.id.emailUsuario);
         nombreUsuario = (EditText) findViewById(R.id.nombreUsuario);
         IDUsuario = (TextView) findViewById(R.id.IDUsuario);
         pbCargando = (ProgressBar) findViewById(R.id.pbCargando);
@@ -145,6 +145,23 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void obtenerUsuario(String email){
         mainPresenter.obtenerUsuario(email);
+    }
+
+    @Override
+    public void eliminarUsuario(String id){
+        mainPresenter.eliminarUsuario(id);
+    }
+
+    @Override
+    public void eliminarUsuarioSatisfactorio(){
+        Toast.makeText(getApplicationContext(), getString(R.string.mensaje_satisfactorio_eliminar_usuario), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public void eliminarUsuarioError(){
+        Toast.makeText(getApplicationContext(), getString(R.string.mensaje_error_eliminar_usuario), Toast.LENGTH_SHORT).show();
     }
 
     @Override

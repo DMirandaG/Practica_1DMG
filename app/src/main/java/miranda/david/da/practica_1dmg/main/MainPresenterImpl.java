@@ -33,6 +33,11 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
+    public void eliminarUsuario(String id){
+        mainInteractor.eliminarUsuario(id);
+    }
+
+    @Override
     public void onStart() {
         eventBus.register(this);
     }
@@ -58,6 +63,12 @@ public class MainPresenterImpl implements MainPresenter {
                 break;
             case MainEvent.ON_OBTENER_DATOS_ERROR:
                 mainView.errorObtenerDatos();
+                break;
+            case MainEvent.ON_BORRAR_USUARIO_CORRECTO:
+                mainView.eliminarUsuarioSatisfactorio();
+                break;
+            case MainEvent.ON_BORRAR_USUARIO_ERROR:
+                mainView.eliminarUsuarioError();
                 break;
 
         }

@@ -8,6 +8,11 @@ public class MainEvent {
     public final static int ON_OBTENER_DATOS = 2;
     public final static int ON_OBTENER_DATOS_ERROR = 3;
 
+    public final static int ON_BORRAR_USUARIO_CORRECTO = 4;
+    public final static int ON_BORRAR_USUARIO_ERROR = 5;
+
+
+
 
 
     private int eventType;

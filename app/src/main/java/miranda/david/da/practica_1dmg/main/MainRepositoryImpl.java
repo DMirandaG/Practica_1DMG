@@ -2,8 +2,12 @@ package miranda.david.da.practica_1dmg.main;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,8 +21,14 @@ import miranda.david.da.practica_1dmg.usuario.Usuario;
 
 public class MainRepositoryImpl implements MainRepository {
 
+    private static final String TAG = "BorrarCuenta";
+
+    private FirebaseUser user;
+
 
     public MainRepositoryImpl() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
     }
 
 
@@ -55,9 +65,21 @@ public class MainRepositoryImpl implements MainRepository {
 
 
     @Override
-    public void eliminarUsuario(String id){
+    public void eliminarUsuario(final String id){
         final DatabaseReference usuarioRef = FirebaseDatabase.getInstance().getReference().child("usuarios").child(id);
         usuarioRef.removeValue();
+        user.delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User account deleted.");
+                            postEvent2(MainEvent.ON_BORRAR_USUARIO_CORRECTO);
+                        }else{
+                            postEvent2(MainEvent.ON_BORRAR_USUARIO_ERROR);
+                        }
+                    }
+                });
 
     }
 
