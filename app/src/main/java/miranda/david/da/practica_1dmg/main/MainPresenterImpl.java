@@ -38,6 +38,11 @@ public class MainPresenterImpl implements MainPresenter {
     }
 
     @Override
+    public void actualizarDatos(String id, String email, String username){
+        mainInteractor.actualizarDatos(id, email, username);
+    }
+
+    @Override
     public void onStart() {
         eventBus.register(this);
     }
@@ -69,6 +74,12 @@ public class MainPresenterImpl implements MainPresenter {
                 break;
             case MainEvent.ON_BORRAR_USUARIO_ERROR:
                 mainView.eliminarUsuarioError();
+                break;
+            case MainEvent.ON_DATOS_ACTUALIZADOS_CORRECTO:
+                mainView.pintarUsuario(event.getUsuario());
+                break;
+            case MainEvent.ON_DATOS_ACTUALIZADOS_ERROR:
+                mainView.errorObtenerDatos();
                 break;
 
         }

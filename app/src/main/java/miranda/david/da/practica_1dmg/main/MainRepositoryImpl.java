@@ -24,10 +24,12 @@ public class MainRepositoryImpl implements MainRepository {
     private static final String TAG = "BorrarCuenta";
 
     private FirebaseUser user;
+    private DatabaseReference userUpdate;
 
 
     public MainRepositoryImpl() {
         user = FirebaseAuth.getInstance().getCurrentUser();
+        userUpdate = FirebaseDatabase.getInstance().getReference();
 
     }
 
@@ -52,6 +54,7 @@ public class MainRepositoryImpl implements MainRepository {
                     usuario.setFoto(datas.child("foto").getValue().toString());
                     usuario.setId(datas.child("id").getValue().toString());
                     postEvent(MainEvent.ON_OBTENER_DATOS, usuario);
+
                 }
 
             }
@@ -80,6 +83,27 @@ public class MainRepositoryImpl implements MainRepository {
                         }
                     }
                 });
+
+    }
+
+    @Override
+    public void actualizarDatos(String id, String email, String username){
+        final DatabaseReference usuarioRef = FirebaseDatabase.getInstance().getReference();
+        usuarioRef.child("usuarios").orderByChild("id").equalTo(id);
+        usuarioRef.child("usuarios").child(id).child("username").setValue(username);
+        usuarioRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                postEvent2(MainEvent.ON_DATOS_ACTUALIZADOS_CORRECTO);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                postEvent2(MainEvent.ON_DATOS_ACTUALIZADOS_ERROR);
+            }
+        });
+
+
 
     }
 

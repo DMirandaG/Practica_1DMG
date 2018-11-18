@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private EditText nombreUsuario;
     private TextView IDUsuario;
     private ProgressBar pbCargando;
+    private ImageView foto;
 
     private static final String TAG = "IDUsuario";
 
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         botonGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                actualizarDatos(IDUsuario.getText().toString(), emailUsuario.getText().toString(), nombreUsuario.getText().toString());
             }
         });
 
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         nombreUsuario = (EditText) findViewById(R.id.nombreUsuario);
         IDUsuario = (TextView) findViewById(R.id.IDUsuario);
         pbCargando = (ProgressBar) findViewById(R.id.pbCargando);
+        foto = (ImageView) findViewById(R.id.foto);
 
     }
 
@@ -150,6 +153,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void eliminarUsuario(String id){
         mainPresenter.eliminarUsuario(id);
+    }
+
+    @Override
+    public void actualizarDatos(String id, String email, String username){
+        mainPresenter.actualizarDatos(id, email, username);
     }
 
     @Override

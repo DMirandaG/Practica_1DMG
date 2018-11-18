@@ -11,4 +11,5 @@ interface MainPresenter {
     void onEventLoginThread(MainEvent event);
     void obtenerUsuario(String email);
     void eliminarUsuario(String id);
+    void actualizarDatos(String id, String email, String username);
 }

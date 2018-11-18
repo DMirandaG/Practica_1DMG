@@ -15,4 +15,5 @@ interface MainView {
     void eliminarUsuario(String id);
     void eliminarUsuarioSatisfactorio();
     void eliminarUsuarioError();
+    void actualizarDatos(String id, String email, String username);
 }

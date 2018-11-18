@@ -23,4 +23,9 @@ public class MainInteractorImpl implements MainInteractor {
     public void eliminarUsuario(String id){
         mainRepository.eliminarUsuario(id);
     }
+
+    @Override
+    public void actualizarDatos(String id, String email, String username){
+        mainRepository.actualizarDatos(id, email, username);
+    }
 }
