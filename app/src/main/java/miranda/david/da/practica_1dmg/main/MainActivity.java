@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.crashlytics.android.Crashlytics;
 
 import miranda.david.da.practica_1dmg.R;
 import miranda.david.da.practica_1dmg.login.LoginActivity;
@@ -85,6 +88,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
         IDUsuario = (TextView) findViewById(R.id.IDUsuario);
         pbCargando = (ProgressBar) findViewById(R.id.pbCargando);
         foto = (ImageView) findViewById(R.id.foto);
+        /*Button crashButton = new Button(this);
+        crashButton.setText("Crash!");
+        crashButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Crashlytics.getInstance().crash(); // Force a crash
+            }
+        });
+        addContentView(crashButton,
+                new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));*/
 
     }
 

@@ -11,6 +11,7 @@ public class MyFirebaseInstanceIDService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+
     }
 
 

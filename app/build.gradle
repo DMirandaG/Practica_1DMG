@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+//Firebase
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 27
@@ -35,7 +38,8 @@ dependencies {
 
     //Event Bus
     implementation 'org.greenrobot:eventbus:3.1.1'
+
+    // Add dependency
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.6'
 }
 
-//Firebase
-apply plugin: 'com.google.gms.google-services'
