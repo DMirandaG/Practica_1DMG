@@ -10,7 +10,7 @@ public class MainEvent {
 
     public final static int ON_BORRAR_USUARIO_CORRECTO = 4;
     public final static int ON_BORRAR_USUARIO_ERROR = 5;
-        public final static int ON_DATOS_ACTUALIZADOS_CORRECTO = 6;
+    public final static int ON_DATOS_ACTUALIZADOS_CORRECTO = 6;
     public final static int ON_DATOS_ACTUALIZADOS_ERROR = 7;
 
 

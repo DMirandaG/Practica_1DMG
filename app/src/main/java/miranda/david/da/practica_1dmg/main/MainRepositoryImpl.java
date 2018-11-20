@@ -43,7 +43,7 @@ public class MainRepositoryImpl implements MainRepository {
     @Override
     public void obtenerUsuario(final String email){
         final DatabaseReference usuarioRef = FirebaseDatabase.getInstance().getReference();
-        usuarioRef.child("usuarios").orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
+        usuarioRef.child("usuarios").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -54,7 +54,6 @@ public class MainRepositoryImpl implements MainRepository {
                     usuario.setFoto(datas.child("foto").getValue().toString());
                     usuario.setId(datas.child("id").getValue().toString());
                     postEvent(MainEvent.ON_OBTENER_DATOS, usuario);
-
                 }
 
             }

@@ -3,7 +3,7 @@
     <string name="correo">Correo</string>
     <string name="password">Contraseña</string>
     <string name="login">Log In</string>
-    <string name="usuario">Username</string>
+    <string name="user">Username</string>
     <string name="repetirpassword">Repetir Contraseña</string>
     <string name="mensaje_error_activity_login">Login error</string>
     <string name="mensaje_satisfactorio_activity_login">Login satisfactorio</string>

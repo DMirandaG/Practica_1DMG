@@ -14,16 +14,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.crashlytics.android.Crashlytics;
+import com.bumptech.glide.Glide;
+
+import java.time.Instant;
 
 import miranda.david.da.practica_1dmg.R;
 import miranda.david.da.practica_1dmg.login.LoginActivity;
+import miranda.david.da.practica_1dmg.main.events.GlideApp;
 import miranda.david.da.practica_1dmg.usuario.Usuario;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
     private MainPresenter mainPresenter;
-
     private Button botonGuardar;
     private Button botonLogOut;
     private Button botonEliminar;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     private static final String TAG = "IDUsuario";
 
+    public static final String URL_IMAGE_DEFAULT="https://firebasestorage.googleapis.com/v0/b/practica1-ef4b9.appspot.com/o/practica%2Ficono_seta.png?alt=media&token=ed1621dd-f86c-4d69-8d9c-7912a8f71361";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         initView();
         mostrarEmail();
         obtenerUsuario(emailUsuario.getText().toString());
+
     }
 
     @Override
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         super.onStop();
         mainPresenter.onStop();
     }
+
 
     private void initView(){
 
@@ -88,6 +93,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
         IDUsuario = (TextView) findViewById(R.id.IDUsuario);
         pbCargando = (ProgressBar) findViewById(R.id.pbCargando);
         foto = (ImageView) findViewById(R.id.foto);
+        //Glide.with(this).load(URL_IMAGE_DEFAULT).into(foto);
+        GlideApp.with(this).load(URL_IMAGE_DEFAULT).fitCenter().into(foto);
+
+
         /*Button crashButton = new Button(this);
         crashButton.setText("Crash!");
         crashButton.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         addContentView(crashButton,
                 new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT));*/
+
 
     }
 
@@ -195,7 +205,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void errorObtenerDatos(){
         Toast.makeText(getApplicationContext(), getString(R.string.mensaje_error_obtener_datos_usuario), Toast.LENGTH_SHORT).show();
-
 
     }
 
