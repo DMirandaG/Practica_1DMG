@@ -16,4 +16,5 @@ interface MainView {
     void eliminarUsuarioSatisfactorio();
     void eliminarUsuarioError();
     void actualizarDatos(String id, String email, String username);
+    void mensajeActualizarDatos();
 }

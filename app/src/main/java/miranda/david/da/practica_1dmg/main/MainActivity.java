@@ -208,6 +208,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     }
 
+    @Override
+    public void mensajeActualizarDatos(){
+        Toast.makeText(getApplicationContext(), getString(R.string.mensaje_actualizar_datos_usuario), Toast.LENGTH_SHORT).show();
+    }
+
 
 
 

@@ -1,10 +1,12 @@
 package miranda.david.da.practica_1dmg.main;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import miranda.david.da.practica_1dmg.R;
 import miranda.david.da.practica_1dmg.main.events.MainEvent;
 
 public class MainPresenterImpl implements MainPresenter {
@@ -76,6 +78,7 @@ public class MainPresenterImpl implements MainPresenter {
                 mainView.eliminarUsuarioError();
                 break;
             case MainEvent.ON_DATOS_ACTUALIZADOS_CORRECTO:
+                mainView.mensajeActualizarDatos();
                 mainView.pintarUsuario(event.getUsuario());
                 break;
             case MainEvent.ON_DATOS_ACTUALIZADOS_ERROR:
