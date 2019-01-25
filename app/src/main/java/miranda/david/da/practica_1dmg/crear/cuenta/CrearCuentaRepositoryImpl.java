@@ -29,6 +29,7 @@ public class CrearCuentaRepositoryImpl implements CrearCuentaRepository {
     }
 
 
+    //Método para crear cuenta apartir de los datos obtenidos
     @Override
     public void crearCuenta (final String email, final String password) {
         try{
@@ -52,6 +53,7 @@ public class CrearCuentaRepositoryImpl implements CrearCuentaRepository {
         }
     }
 
+    //Método para loguearse en la cuenta apartir de los datos obtenidos
     private void login(final String email, String password) {
         try{
             Log.d(TAG, "signIn:" + email);
@@ -75,6 +77,7 @@ public class CrearCuentaRepositoryImpl implements CrearCuentaRepository {
 
     }
 
+    //Método para crear el usuario en la BD de Firebase
     private void crearUserDB(String email) {
         final DatabaseReference usuarioRef = FirebaseDatabase.getInstance().getReference().child("usuarios");
         String key = usuarioRef.push().getKey();
@@ -96,6 +99,7 @@ public class CrearCuentaRepositoryImpl implements CrearCuentaRepository {
     }
 
 
+    //EventBus para el tratamiento de los eventos
     private void postEvent(int type) {
         CrearCuentaEvent crearCuentaEvent = new CrearCuentaEvent();
         crearCuentaEvent.setEventType(type);

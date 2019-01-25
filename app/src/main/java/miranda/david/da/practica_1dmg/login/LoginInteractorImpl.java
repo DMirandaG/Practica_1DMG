@@ -8,6 +8,7 @@ public class LoginInteractorImpl implements LoginInteractor {
         loginRepository =  new LoginRepositoryImpl();
     }
 
+    // Envío de los datos para iniciar sesion
     @Override
     public void login(String email, String password) {
         loginRepository.login(email, password);

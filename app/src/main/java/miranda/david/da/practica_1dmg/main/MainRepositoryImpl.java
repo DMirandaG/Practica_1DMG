@@ -33,13 +33,14 @@ public class MainRepositoryImpl implements MainRepository {
 
     }
 
-
+    //Método que cierra la sesion actual
     @Override
     public void cerrarSesion(){
         FirebaseAuth.getInstance().signOut();
         postEvent2(MainEvent.ON_LOG_OUT);
     }
 
+    //Método que obtiene el email del usuario para pedir los datos del mismo a la BD
     @Override
     public void obtenerUsuario(final String email){
         final DatabaseReference usuarioRef = FirebaseDatabase.getInstance().getReference();
@@ -65,7 +66,7 @@ public class MainRepositoryImpl implements MainRepository {
     }
 
 
-
+    //Método que elimina al usuario de la BD
     @Override
     public void eliminarUsuario(final String id){
         final DatabaseReference usuarioRef = FirebaseDatabase.getInstance().getReference().child("usuarios").child(id);
@@ -85,6 +86,7 @@ public class MainRepositoryImpl implements MainRepository {
 
     }
 
+    //Método para actualizar los datos del usuario en la BD
     @Override
     public void actualizarDatos(String id, String email, String username){
         final DatabaseReference usuarioRef = FirebaseDatabase.getInstance().getReference();
@@ -106,6 +108,7 @@ public class MainRepositoryImpl implements MainRepository {
 
     }
 
+    //EventBus para el tratamiento de los eventos
     private void postEvent(int type, Usuario usuario) {
         MainEvent mainEvent = new MainEvent();
         mainEvent.setEventType(type);
@@ -113,6 +116,7 @@ public class MainRepositoryImpl implements MainRepository {
         EventBus.getDefault().post(mainEvent);
     }
 
+    //EventBus para el tratamiento de los eventos
     private void postEvent2(int type) {
         MainEvent mainEvent = new MainEvent();
         mainEvent.setEventType(type);

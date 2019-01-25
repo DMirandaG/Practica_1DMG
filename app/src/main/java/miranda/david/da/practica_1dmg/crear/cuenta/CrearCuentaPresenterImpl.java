@@ -23,11 +23,13 @@ public class CrearCuentaPresenterImpl implements CrearCuentaPresenter {
         this.eventBus = EventBus.getDefault();
     }
 
+    //Envío de los datos para crear la cuenta
     @Override
     public void crearCuenta(String email, String password) {
         crearCuentaInteractor.crearCuenta(email, password);
     }
 
+    //Inicio del bus de eventos
     @Override
     public void onStart() {
         eventBus.register(this);
@@ -39,6 +41,7 @@ public class CrearCuentaPresenterImpl implements CrearCuentaPresenter {
         eventBus.unregister(this);
     }
 
+    //Método que ejecuta diferentes métodos según el estado del EventBus
     @Override
     @Subscribe
     public void onEventLoginThread(CrearCuentaEvent event) {

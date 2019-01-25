@@ -9,6 +9,7 @@ public class CrearCuentaInteractorImpl implements CrearCuentaInteractor {
     }
 
 
+    // Envío de los datos para crear la cuenta
     @Override
     public void crearCuenta(String email, String password){
         crearCuentaRepository.crearCuenta(email, password);

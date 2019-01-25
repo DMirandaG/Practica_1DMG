@@ -23,6 +23,7 @@ public class LoginRepositoryImpl implements LoginRepository {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    //Método para iniciar sesion apartir de los datos obtenidos
     @Override
     public void login(String email, String password) {
         try{
@@ -45,7 +46,7 @@ public class LoginRepositoryImpl implements LoginRepository {
         }
     }
 
-
+    //EventBus para el tratamiento de los eventos
     private void postEvent(int type) {
         LoginEvent loginEvent = new LoginEvent();
         loginEvent.setEventType(type);

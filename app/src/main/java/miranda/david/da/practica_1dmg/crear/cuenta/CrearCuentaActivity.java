@@ -49,6 +49,7 @@ public class CrearCuentaActivity extends AppCompatActivity implements CrearCuent
         crearCuentaPresenter.onStop();
     }
 
+    // Inicialización de los elementos de la pantalla
     private void initView(){
 
         emailUsuarioNuevo = (EditText) findViewById(R.id.emailUsuarioNuevo);
@@ -96,6 +97,7 @@ public class CrearCuentaActivity extends AppCompatActivity implements CrearCuent
 
     }
 
+    //Cambio a pantalla Login
     @Override
     public void irALogin() {
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -103,11 +105,13 @@ public class CrearCuentaActivity extends AppCompatActivity implements CrearCuent
         finish();
     }
 
+    //Obtención de los datos necesarios para crear la cuenta
     @Override
     public void crearCuenta(String email, String password) {
         crearCuentaPresenter.crearCuenta(email, password);
     }
 
+    //Habilitar los elementos cuando sea oportuno
     @Override
     public void mostrarCargando() {
         pbCargando.setVisibility(View.VISIBLE);
@@ -124,6 +128,7 @@ public class CrearCuentaActivity extends AppCompatActivity implements CrearCuent
 
     }
 
+    //Deshabilitar los elementos cuando sea oportuno
     @Override
     public void ocultarCargando() {
         pbCargando.setVisibility(View.GONE);
@@ -140,6 +145,7 @@ public class CrearCuentaActivity extends AppCompatActivity implements CrearCuent
 
     }
 
+    //Cambio a pantalla Main
     @Override
     public void irAMain() {
         Toast.makeText(getApplicationContext(), getString(R.string.mensaje_satisfactorio_crear_cuenta), Toast.LENGTH_SHORT).show();
@@ -149,12 +155,14 @@ public class CrearCuentaActivity extends AppCompatActivity implements CrearCuent
         finish();
     }
 
+    //Muestra error al crear cuenta
     @Override
     public void mostrarErrorCrearCuenta() {
         Toast.makeText(getApplicationContext(), getString(R.string.mensaje_error_crear_cuenta), Toast.LENGTH_SHORT).show();
 
     }
 
+    //Limpiar entrada de datos
     @Override
     public void limpiarFormulario() {
         emailUsuarioNuevo.setText("");
@@ -162,6 +170,7 @@ public class CrearCuentaActivity extends AppCompatActivity implements CrearCuent
         passwordUsuarioNuevaRepetida.setText("");
     }
 
+    //Comprobación de la password
     public final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
             "[a-zA-Z0-9+._%-+]{1,256}" +
                     "@" +

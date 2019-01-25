@@ -23,11 +23,13 @@ public class LoginPresenterImpl implements LoginPresenter {
         this.eventBus = EventBus.getDefault();
     }
 
+    //Envío de los datos para iniciar sesion
     @Override
     public void login(String email, String password) {
         loginInteractor.login(email, password);
     }
 
+    //Inicio del bus de eventos
     @Override
     public void onStart() {
         eventBus.register(this);
@@ -39,6 +41,7 @@ public class LoginPresenterImpl implements LoginPresenter {
         eventBus.unregister(this);
     }
 
+    //Método que ejecuta diferentes métodos según el estado del EventBus
     @Override
     @Subscribe
     public void onEventLoginThread(LoginEvent event) {

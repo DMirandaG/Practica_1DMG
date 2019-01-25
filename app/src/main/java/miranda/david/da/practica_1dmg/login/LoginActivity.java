@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         loginPresenter.onStop();
     }
 
+    // Inicialización de los elementos de la pantalla
     private void initView(){
         botonLogin = (Button) findViewById(R.id.botonLogin);
         botonLogin.setOnClickListener(new View.OnClickListener() {
@@ -70,11 +71,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     }
 
+    //Obtención de los datos necesarios para iniciar sesion
     @Override
     public void login(String email, String password) {
         loginPresenter.login(email, password);
     }
 
+    //Cambiar a pantalla Main
     @Override
     public void irAMain() {
         Toast.makeText(getApplicationContext(), getString(R.string.mensaje_satisfactorio_activity_login), Toast.LENGTH_SHORT).show();
@@ -84,6 +87,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         finish();
     }
 
+    //Cambiar a pantalla de creacion de cuenta
     @Override
     public void irACrearCuenta() {
         Intent intent = new Intent(getApplicationContext(), CrearCuentaActivity.class);
@@ -91,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         finish();
     }
 
+    //Habilitar los elementos cuando sea oportuno
     @Override
     public void mostrarCargando() {
         pbCargando.setVisibility(View.VISIBLE);
@@ -105,6 +110,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     }
 
+    //Deshabilitar los elementos cuando sea oportuno
     @Override
     public void ocultarCargando() {
         pbCargando.setVisibility(View.GONE);
@@ -119,11 +125,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     }
 
+    //Muestra de error si el login no es satisfactorio
     @Override
     public void mostrarErrorLogin() {
         Toast.makeText(getApplicationContext(), getString(R.string.mensaje_error_activity_login), Toast.LENGTH_SHORT).show();
     }
 
+    //Limpiar entrada de datos
     @Override
     public void limpiarFormulario() {
         entradaPassword.setText("");

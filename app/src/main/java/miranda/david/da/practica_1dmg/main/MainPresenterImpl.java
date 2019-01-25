@@ -24,21 +24,25 @@ public class MainPresenterImpl implements MainPresenter {
         this.eventBus = EventBus.getDefault();
     }
 
+    //Método que cierra la sesion actual
     @Override
     public void cerrarSesion() {
         mainInteractor.cerrarSesion();
     }
 
+    //Método que obtiene el email del usuario para pedir los datos del mismo a la BD
     @Override
     public void obtenerUsuario(String email){
         mainInteractor.obtenerUsuario(email);
     }
 
+    //Método que elimina al usuario de la BD
     @Override
     public void eliminarUsuario(String id){
         mainInteractor.eliminarUsuario(id);
     }
 
+    //Método para actualizar los datos del usuario en la BD
     @Override
     public void actualizarDatos(String id, String email, String username){
         mainInteractor.actualizarDatos(id, email, username);
@@ -55,7 +59,7 @@ public class MainPresenterImpl implements MainPresenter {
         eventBus.unregister(this);
     }
 
-
+    //Método que ejecuta diferentes métodos según el estado del EventBus
     @Override
     @Subscribe
     public void onEventLoginThread(MainEvent event) {

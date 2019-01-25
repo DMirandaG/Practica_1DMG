@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         mainPresenter.onStop();
     }
 
-
+    // Inicialización de los elementos de la pantalla
     private void initView(){
 
         botonLogOut = (Button) findViewById(R.id.botonLogOut);
@@ -112,11 +112,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
 
+    //Método que cierra la sesion actual
     @Override
     public void cerrarSesion(){
         mainPresenter.cerrarSesion();
     }
 
+    //Método para ir a la pantalla Main
     @Override
     public void irALogin() {
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         finish();
     }
 
+    //Obtiene el email de la pantalla de Login para establecerlo en pantalla
     @Override
     public void mostrarEmail() {
         Intent intent = getIntent();
@@ -132,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         emailUsuario.setText(j);
     }
 
+    //Habilitar los elementos cuando sea oportuno
     @Override
     public void mostrarCargando() {
         pbCargando.setVisibility(View.VISIBLE);
@@ -150,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     }
 
+    //Deshabilitar los elementos cuando sea oportuno
     @Override
     public void ocultarCargando() {
         pbCargando.setVisibility(View.GONE);
@@ -168,21 +173,25 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     }
 
+    //Método que obtiene el email del usuario para pedir los datos del mismo a la BD
     @Override
     public void obtenerUsuario(String email){
         mainPresenter.obtenerUsuario(email);
     }
 
+    //Método que elimina al usuario de la BD
     @Override
     public void eliminarUsuario(String id){
         mainPresenter.eliminarUsuario(id);
     }
 
+    //Método para actualizar los datos del usuario en la BD
     @Override
     public void actualizarDatos(String id, String email, String username){
         mainPresenter.actualizarDatos(id, email, username);
     }
 
+    //Método que devuelve un mensaje si la eliminacion del usuario ha sido satisfactoria
     @Override
     public void eliminarUsuarioSatisfactorio(){
         Toast.makeText(getApplicationContext(), getString(R.string.mensaje_satisfactorio_eliminar_usuario), Toast.LENGTH_SHORT).show();
@@ -190,11 +199,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
         startActivity(intent);
         finish();
     }
+
+    //Método que devuelve un mensaje si la eliminacion del usuario ha sido erronea
     @Override
     public void eliminarUsuarioError(){
         Toast.makeText(getApplicationContext(), getString(R.string.mensaje_error_eliminar_usuario), Toast.LENGTH_SHORT).show();
     }
 
+    //Muestra en pantalla los datos del usuario
     @Override
     public void pintarUsuario(Usuario usuario){
         emailUsuario.setText(usuario.getEmail());
@@ -202,12 +214,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
         nombreUsuario.setText(usuario.getUsername());
     }
 
+    //Método que muestra un mensaje si los datos del usuario no han podido ser recuperados
     @Override
     public void errorObtenerDatos(){
         Toast.makeText(getApplicationContext(), getString(R.string.mensaje_error_obtener_datos_usuario), Toast.LENGTH_SHORT).show();
 
     }
 
+    //Método que muestra un mensaje si los datos del usuario se han recuperado con éxito
     @Override
     public void mensajeActualizarDatos(){
         Toast.makeText(getApplicationContext(), getString(R.string.mensaje_actualizar_datos_usuario), Toast.LENGTH_SHORT).show();
